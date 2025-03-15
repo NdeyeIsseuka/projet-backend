@@ -138,20 +138,27 @@ function Agent() {
     };
 
     return (
-        <div>
-            <h2>Liste des Agents</h2>
+        <> 
+        <h1>Liste des Agents</h1>
+        <div className="carousel carousel-vertical rounded-box h-96">
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {agents.map(agent => (
                 <div key={agent.id}>
                     <h3>{agent.nameAgent}</h3>
                     <p>Localisation : {agent.localisation.nomLocalisation}</p>
                     <p>Service : {agent.serviceApp.nameService}</p>
-                    <p>Numéro en cours de traitement : {currentTickets[`${agent.localisation.id}-${agent.serviceApp.id}`]}</p>
-                    <button onClick={() => handlePrevious(agent.localisation.id, agent.serviceApp.id)}>Précédent</button>
-                    <button onClick={() => handleNext(agent.localisation.id, agent.serviceApp.id)}>Suivant</button>
+                    <h2>Numéro en cours de traitement : {currentTickets[`${agent.localisation.id}-${agent.serviceApp.id}`]}</h2>
+                    <button onClick={() => handlePrevious(agent.localisation.id, agent.serviceApp.id)} className="btn btn-dash btn-error ">Précédent</button>
+                    <button onClick={() => handleNext(agent.localisation.id, agent.serviceApp.id)} className="btn btn-dash btn-error">Suivant</button>
+                    <div class="border-t-4 border-red-950 my-4"></div>
+
                 </div>
+                
             ))}
         </div>
+
+        </>
+        
     );
 }
 

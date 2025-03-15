@@ -15,41 +15,12 @@ function Admin() {
             });
     }, []);
 
-    const handleNext = (localisationId, serviceId) => {
-        api.post('/agents/next', { localisationId, serviceId })
-            .then(response => {
-                const updatedAgents = agents.map(agent => {
-                    if (agent.localisationId === localisationId && agent.serviceId === serviceId) {
-                        return { ...agent, currentTicketNumber: response.data };
-                    }
-                    return agent;
-                });
-                setAgents(updatedAgents);
-            })
-            .catch(error => {
-                console.error("Erreur lors du passage au ticket suivant:", error);
-            });
-    };
-
-    const handlePrevious = (localisationId, serviceId) => {
-        api.post('/agents/previous', { localisationId, serviceId })
-            .then(response => {
-                const updatedAgents = agents.map(agent => {
-                    if (agent.localisationId === localisationId && agent.serviceId === serviceId) {
-                        return { ...agent, currentTicketNumber: response.data };
-                    }
-                    return agent;
-                });
-                setAgents(updatedAgents);
-            })
-            .catch(error => {
-                console.error("Erreur lors du retour au ticket précédent:", error);
-            });
-    };
 
     return (
-        <div>
-            <h2>Liste des Agents</h2>
+        <>
+                    <h1>Liste des Agents</h1>
+
+        <div className="carousel carousel-vertical rounded-box h-96">
             {agents.map(agent => (
                 <div key={agent.id}>
                     <h3>{agent.nameAgent}</h3>
@@ -58,9 +29,13 @@ function Admin() {
                     <p>Localisation : {agent.localisation.nomLocalisation}</p>
                     <p>Service : {agent.serviceApp.nameService}</p>
                     <p>Numéro en cours de traitement : {agent.currentTicketNumber}</p>
+                    <div class="border-t-4 border-red-950 my-4"></div>
+
                     </div>
             ))}
         </div>
+        </>
+        
     );
 }
 

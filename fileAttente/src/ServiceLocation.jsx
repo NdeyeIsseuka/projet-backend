@@ -37,10 +37,12 @@ function ServiceLocation({ onTicketGenerated }) {
     };
 
     return (
+        <>
+        <div  className="">
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="service">Service:</label>
-                <select id="service" value={selectedService} onChange={e => setSelectedService(e.target.value)}>
+                <select id="service" value={selectedService} onChange={e => setSelectedService(e.target.value)}  className="select select-error">
                     <option value="">Sélectionner un service</option>
                     {services.map(service => (
                         <option key={service.id} value={service.id}>{service.nameService}</option>
@@ -49,16 +51,19 @@ function ServiceLocation({ onTicketGenerated }) {
             </div>
             <div>
                 <label htmlFor="localisation">Localisation:</label>
-                <select id="localisation" value={selectedLocalisation} onChange={e => setSelectedLocalisation(e.target.value)}>
+                <select id="localisation" value={selectedLocalisation} onChange={e => setSelectedLocalisation(e.target.value)}  className="select select-error">
                     <option value="">Sélectionner une localisation</option>
                     {localisations.map(localisation => (
                         <option key={localisation.id} value={localisation.id}>{localisation.nomLocalisation}</option>
                     ))}
                 </select>
             </div>
-            <button type="submit">Générer un ticket</button>
+            <button type="submit" className="btn btn-dash btn-error">Générer un ticket</button>
         </form>
+        </div>
+        </>
     );
+    
 }
 
 export default ServiceLocation;
