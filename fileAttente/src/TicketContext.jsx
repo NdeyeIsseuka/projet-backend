@@ -1,19 +1,3 @@
-// import { createContext, useState } from 'react';
-
-// const TicketContext = createContext();
-
-// const TicketProvider = ({ children }) => {
-//     const [currentTickets, setCurrentTickets] = useState({});
-
-//     return (
-//         <TicketContext.Provider value={{ currentTickets, setCurrentTickets }}>
-//             {children}
-//         </TicketContext.Provider>
-//     );
-// };
-
-// export { TicketProvider, TicketContext };
-
 import { createContext, useState, useEffect } from 'react';
 import api from './Api';
 
