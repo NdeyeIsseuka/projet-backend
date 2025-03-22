@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ServiceLocation from './ServiceLocation';
 import Ticket from './Ticket';
+import { TicketContext } from './TicketContext';
 
 function Home() {
     const [ticket, setTicket] = useState(null);
-
+    const { currentTickets, setCurrentTickets } = useContext(TicketContext);
+   
     const handleTicketGenerated = (ticketData) => {
         setTicket(ticketData);
     };
